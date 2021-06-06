@@ -2,7 +2,7 @@
 /**
  * Header
  *
- * @package ridgeway
+ * @package silverbase
  */
 
 ?>

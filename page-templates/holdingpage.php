@@ -2,7 +2,7 @@
 /**
  * ============== Template Name: Holding Page
  *
- * @package rossross
+ * @package silverbase
  */
 get_header();?>
 

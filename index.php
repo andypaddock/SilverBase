@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package rossross
+ * @package silverbase
  */
 get_header();?>
 

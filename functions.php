@@ -1,8 +1,8 @@
 <?php
 /**
- * Ridgeway Barns functions and definitions
+ * silverbase Barns functions and definitions
  *
- * @package ridgeway
+ * @package silverbase
  */
 
 /****************************************************/
@@ -10,52 +10,52 @@
 /****************************************************/
 
 /* Enqueue scripts and styles */
-add_action('wp_enqueue_scripts', 'ridgeway_scripts');
+add_action('wp_enqueue_scripts', 'silverbase_scripts');
 
 /* Add Menus */
-add_action('init', 'ridgeway_custom_menu');
+add_action('init', 'silverbase_custom_menu');
 
 /* Dashboard Config */
-add_action('wp_dashboard_setup', 'ridgeway_dashboard_widget');
+add_action('wp_dashboard_setup', 'silverbase_dashboard_widget');
 
 /* Dashboard Style */
-add_action('admin_head', 'ridgeway_custom_fonts');
+add_action('admin_head', 'silverbase_custom_fonts');
 
 /* Remove Default Menu Items */
-add_action('admin_menu', 'ridgeway_remove_menus');
+add_action('admin_menu', 'silverbase_remove_menus');
 
 /* Change Posts Columns */
-add_filter('manage_posts_columns', 'ridgeway_manage_columns');
+add_filter('manage_posts_columns', 'silverbase_manage_columns');
 
 /* Reorder Admin Menu */
-add_filter('custom_menu_order', 'ridgeway_reorder_menu');
-add_filter('menu_order', 'ridgeway_reorder_menu');
+add_filter('custom_menu_order', 'silverbase_reorder_menu');
+add_filter('menu_order', 'silverbase_reorder_menu');
 
 /* Remove Comments Link */
-add_action('wp_before_admin_bar_render', 'ridgeway_manage_admin_bar');
+add_action('wp_before_admin_bar_render', 'silverbase_manage_admin_bar');
 
 
 /****************************************************/
 /*                     Functions                     /
 /****************************************************/
 
-function ridgeway_scripts() {
-	wp_enqueue_style( 'ridgeway-style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
-	wp_enqueue_script( 'ridgeway-core-js', get_template_directory_uri() . '/inc/js/compiled.js', array('jquery'), true);
-	wp_enqueue_script( 'ridgeway-intersection-js', get_template_directory_uri() . '/inc/js/intersection.js', array('jquery'), false, true);
+function silverbase_scripts() {
+	wp_enqueue_style( 'silverbase-style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+	wp_enqueue_script( 'silverbase-core-js', get_template_directory_uri() . '/inc/js/compiled.js', array('jquery'), true);
+	wp_enqueue_script( 'silverbase-intersection-js', get_template_directory_uri() . '/inc/js/intersection.js', array('jquery'), false, true);
 	wp_enqueue_script( 'anime-js', '//cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js', array(), true); 
     wp_enqueue_script( 'lodash-js', '//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js', array(), true); 
 }
 
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 
-	if ( 'ridgeway-intersection-js' !== $handle )
+	if ( 'silverbase-intersection-js' !== $handle )
 		return $tag;
 
 	return str_replace( ' src', ' defer="defer" src', $tag );
 }, 10, 2 );
 
-function ridgeway_custom_menu() {
+function silverbase_custom_menu() {
 	register_nav_menus(array(
 		'main-menu' => __( 'Main Menu' )
 	));
@@ -65,16 +65,16 @@ function ridgeway_custom_menu() {
 	));
 }
 
-function ridgeway_dashboard_widget() {
+function silverbase_dashboard_widget() {
 	global $wp_meta_boxes;
-	wp_add_dashboard_widget('custom_help_widget', 'ridgeway Support', 'ridgeway_dashboard_help');
+	wp_add_dashboard_widget('custom_help_widget', 'silverbase Support', 'silverbase_dashboard_help');
 }
 
-function ridgeway_dashboard_help() {
+function silverbase_dashboard_help() {
 	echo file_get_contents(__DIR__ . "/admin-settings/dashboard.html");
 }
 
-function ridgeway_custom_fonts() {
+function silverbase_custom_fonts() {
 	echo '<style type="text/css">' . file_get_contents(__DIR__ . "/admin-settings/style-admin.css") . '</style>';
 }
 
@@ -88,16 +88,16 @@ if(function_exists('acf_add_options_page')) {
 	));
 }
 
-function ridgeway_remove_menus(){
+function silverbase_remove_menus(){
 	remove_menu_page( 'edit-comments.php' ); //Comments
 }
 
-function ridgeway_manage_columns($columns) {
+function silverbase_manage_columns($columns) {
 	unset($columns["comments"]);
 	return $columns;
 }
 
-function ridgeway_reorder_menu() {
+function silverbase_reorder_menu() {
     return array(
 		'index.php',                        // Dashboard
 		'separator1',                       // --Space--
@@ -114,7 +114,7 @@ function ridgeway_reorder_menu() {
    );
 }
 
-function ridgeway_manage_admin_bar(){
+function silverbase_manage_admin_bar(){
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('comments');
 }

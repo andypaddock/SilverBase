@@ -2,7 +2,7 @@
 /**
  * ============== Template Name: Terms and Privacy
  *
- * @package ridgeway
+ * @package silverbase
  */
 get_header();?>
 

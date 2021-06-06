@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages
  *
- * @package ridgeway
+ * @package silverbase
  */
 
 get_header(); ?>

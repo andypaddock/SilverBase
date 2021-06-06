@@ -2,7 +2,7 @@
 /**
  * Default Page Template
  *
- * @package ridgeway
+ * @package silverbase
  */
 ?>
 

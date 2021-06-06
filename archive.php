@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package ridgeway
+ * @package silverbase
  */
 get_header();?>
 

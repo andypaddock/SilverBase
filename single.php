@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts
  *
- * @package ridgeway
+ * @package silverbase
  */
 get_header(); ?>
 
