@@ -2,7 +2,7 @@
 /**
  * ============== Template Name: Home Page
  *
- * @package ridgeway
+ * @package silverbase
  */
 get_header();?>
 
